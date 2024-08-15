@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, KeyboardAvoidingViewBase, KeyboardAvoidingView } from 'react-native';
 import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
@@ -51,48 +51,54 @@ export default function Login() {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.restante}>
-                <Image
-                    source={require("../../assets/favicon.png")}
-                    style={styles.imagen}
-                />
+        <KeyboardAvoidingView >
+            <View >
+
+                <ScrollView >
+
+                    <View style={styles.restante}>
+                        <Image
+                            source={require("../../assets/favicon.png")}
+                            style={styles.imagen}
+                        />
+                    </View>
+                    <View style={styles.Bg}>
+                        <Text style={styles.loginText}>Ingresa</Text>
+
+                        <View style={{ width: "95%", display: "flex" }}>
+                            <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Email"
+                                placeholderTextColor="#aaa"
+                                value={email}
+                                onChangeText={setEmail}
+                            />
+                        </View>
+                        <View style={{ width: "95%", display: "flex" }}>
+                            <Text style={{ color: color.COLOR_WHITE }}>Contrasena</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Password"
+                                placeholderTextColor="#aaa"
+                                secureTextEntry
+                                value={password}
+                                onChangeText={setPassword}
+                            />
+                        </View>
+                        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                            <Text style={styles.buttonText}>Login</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.googleButton, { gap: 12 }]} onPress={() => console.log("Google Login")}>
+                            <FontAwesome name="google" size={24} color="white" />
+                            <Text style={styles.buttonText}>Login</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.linkText} onPress={() => navigation.navigate('Register')}>Don't have an account yet? Create one</Text>
+                    </View>
+                    <StatusBar style="auto" />
+                </ScrollView>
             </View>
-            <View style={styles.Bg}>
-                <Text style={styles.loginText}>Ingresa</Text>
-                
-                <View style={{ width: "95%", display: "flex" }}>
-                <Text style={{color:color.COLOR_WHITE}}>Correo Electronico</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Email"
-                        placeholderTextColor="#aaa"
-                        value={email}
-                        onChangeText={setEmail}
-                    />
-                </View>
-                <View style={{ width: "95%", display: "flex" }}>
-                    <Text style={{color:color.COLOR_WHITE}}>Contrasena</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Password"
-                        placeholderTextColor="#aaa"
-                        secureTextEntry
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                </View>
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.googleButton, { gap: 12 }]} onPress={() => console.log("Google Login")}>
-                    <FontAwesome name="google" size={24} color="white" />
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <Text style={styles.linkText} onPress={() => navigation.navigate('Register')}>Don't have an account yet? Create one</Text>
-            </View>
-            <StatusBar style="auto" />
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 20,
-        gap:7
+        gap: 7
     },
     restante: {
         flex: 1,
