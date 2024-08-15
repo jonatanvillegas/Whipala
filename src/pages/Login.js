@@ -63,7 +63,7 @@ export default function Login() {
                         />
                     </View>
                     <View style={styles.Bg}>
-                        <Text style={styles.loginText}>Ingresa</Text>
+                        <Text style={styles.loginText}>Ingresa prueba desde jonatan</Text>
 
                         <View style={{ width: "95%", display: "flex" }}>
                             <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
