@@ -1,0 +1,9 @@
+COLOR_PRIMARIO="#005954";
+COLOR_SECUNDARIO="black";
+COLOR_WHITE = "white"
+
+export default{
+    COLOR_PRIMARIO,
+    COLOR_SECUNDARIO,
+    COLOR_WHITE
+}
