@@ -7,7 +7,7 @@ import Login from '../src/pages/Login';
 import Home from '../src/pages/Home';
 import Notificaciones from '../src/pages/Notificaciones';
 import Citas from '../src/pages/Citas';
-import CreateCourse from '../src/pages/CreateCourse';
+import CreateCourse from '../src/pages/farmacia/Lista-Farmacia';
 import Perfil from '../src/pages/Perfil';
 import Register from '../src/pages/Register';
 import { useAuth } from '../context/AuthProvider';
