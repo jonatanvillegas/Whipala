@@ -20,6 +20,7 @@ import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import color from '../color';
 
 import Sintomas from '../src/pages/Sintomas/Sintomas';
+import PrevencionEnfermedades from '../src/pages/Prevencion/PrevencionEnfermedades,';
 
 const AuthStack = createStackNavigator();
 
@@ -99,7 +100,7 @@ const DrawerNavigator = () => (
 
 const AuthNavigator = () => (
   <AuthStack.Navigator initialRouteName="Sintomas">
-    <AuthStack.Screen name="Sintomas" component={Sintomas} options={{ headerShown: false }} />
+    <AuthStack.Screen name="PrevencionEnfermedades" component={PrevencionEnfermedades} options={{ headerShown: false }} />
     <AuthStack.Screen name="Register" component={Register} options={{ headerShown: false }} />
   </AuthStack.Navigator>
 );
