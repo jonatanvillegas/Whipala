@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, KeyboardAvoidingViewBase, KeyboardAvoidingView } from 'react-native';
 import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
@@ -60,9 +60,9 @@ export default function Login() {
             </View>
             <View style={styles.Bg}>
                 <Text style={styles.loginText}>Ingresa</Text>
-                
+
                 <View style={{ width: "95%", display: "flex" }}>
-                <Text style={{color:color.COLOR_WHITE}}>Correo Electronico</Text>
+                    <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
                     <TextInput
                         style={styles.input}
                         placeholder="Email"
@@ -72,7 +72,7 @@ export default function Login() {
                     />
                 </View>
                 <View style={{ width: "95%", display: "flex" }}>
-                    <Text style={{color:color.COLOR_WHITE}}>Contrasena</Text>
+                    <Text style={{ color: color.COLOR_WHITE }}>Contrasena</Text>
                     <TextInput
                         style={styles.input}
                         placeholder="Password"
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 20,
-        gap:7
+        gap: 7
     },
     restante: {
         flex: 1,
