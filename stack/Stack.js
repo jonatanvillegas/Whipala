@@ -18,6 +18,8 @@ import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import color from '../color';
+import ListaFarmaciaPage from '../src/pages/Sintomas/Sintomas';
+import Sintomas from '../src/pages/Sintomas/Sintomas';
 
 const AuthStack = createStackNavigator();
 
@@ -143,7 +145,10 @@ export const RootNavigator = () => {
           isAdmin === "admin" ? (
             <RootStack.Screen name="Admin" component={AdminNavigator} />
           ) : (
-            <RootStack.Screen name="App" component={AppNavigator} />
+            <>
+              <RootStack.Screen name="App" component={AppNavigator} />
+              <RootStack.Screen name="Sintomas" component={Sintomas} />
+            </>
           )
         ) : (
           <RootStack.Screen name="Auth" component={AuthNavigator} />
