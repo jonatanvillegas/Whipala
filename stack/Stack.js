@@ -19,6 +19,8 @@ import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import color from '../color';
 
+import Sintomas from '../src/pages/Sintomas/Sintomas';
+
 const AuthStack = createStackNavigator();
 
 const AppStack = createBottomTabNavigator();
@@ -96,8 +98,8 @@ const DrawerNavigator = () => (
 );
 
 const AuthNavigator = () => (
-  <AuthStack.Navigator initialRouteName="Login">
-    <AuthStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+  <AuthStack.Navigator initialRouteName="Sintomas">
+    <AuthStack.Screen name="Sintomas" component={Sintomas} options={{ headerShown: false }} />
     <AuthStack.Screen name="Register" component={Register} options={{ headerShown: false }} />
   </AuthStack.Navigator>
 );
@@ -143,7 +145,10 @@ export const RootNavigator = () => {
           isAdmin === "admin" ? (
             <RootStack.Screen name="Admin" component={AdminNavigator} />
           ) : (
-            <RootStack.Screen name="App" component={AppNavigator} />
+            <>
+              <RootStack.Screen name="App" component={AppNavigator} />
+              <RootStack.Screen name="Sintomas" component={Sintomas} />
+            </>
           )
         ) : (
           <RootStack.Screen name="Auth" component={AuthNavigator} />

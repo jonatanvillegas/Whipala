@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CardCurso from '../components/CardCurso';
 import color from '../../color';
+import { Link } from '@react-navigation/native';
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
           </Text>
           <Text style={styles.quoteAuthor}>Confucio</Text>
         </View>
+        <Link to={"/ListaFarmaciaPage"}>
+          prueba
+        </Link>
       </View>
       <View style={styles.contentContainer}>
         <Section title="Te puede interesar" />
