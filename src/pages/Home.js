@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import CardCurso from '../components/CardCurso';
 import color from '../../color';
 import { Link } from '@react-navigation/native';
+import CardPlanta from '../components/CardPlantas';
 
 const Home = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <View style={styles.imageContainer}>
+      <ImageBackground style={styles.imageContainer}
+      source={require("../../assets/ImageHome.jpg")} 
+      resizeMode="cover" 
+      >
         <View style={styles.user}>
           <View style={styles.icon}>
             <Text style={styles.iconText}>E</Text>
@@ -24,10 +28,11 @@ const Home = () => {
         <Link to={"/ListaFarmaciaPage"}>
           prueba
         </Link>
-      </View>
+      </ImageBackground>
+
       <View style={styles.contentContainer}>
         <Section title="Te puede interesar" />
-        <Section title="Plantas Medicinales" />
+        <SectionPlanta title="Plantas Medicinales" />
       </View>
     </ScrollView>
   );
@@ -41,7 +46,14 @@ const Section = ({ title }) => (
     </ScrollView>
   </View>
 );
-
+const SectionPlanta = ({ title }) => (
+  <View style={styles.sectionContainer}>
+    <Text style={styles.sectionTitle}>{title}</Text>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollView}>
+      <CardPlanta />
+    </ScrollView>
+  </View>
+);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,30 +62,29 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     height: 200,
-    marginBottom: 10,
-    paddingHorizontal: 20,
   },
   user: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: color.COLOR_PRIMARIO,
     width: '50%',
     borderRadius: 20,
     padding: 5,
     marginBottom: 20,
     marginTop: 20,
+    marginLeft:20
   },
   icon: {
     width: 30,
     height: 30,
-    backgroundColor: color.COLOR_PRIMARIO,
+    backgroundColor: color.COLOR_VERDE,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
   },
   iconText: {
-    color: color.COLOR_WHITE,
+    color: color.COLOR_PRIMARIO,
     fontWeight: 'bold',
   },
   userText: {
@@ -86,10 +97,10 @@ const styles = StyleSheet.create({
   },
   quoteText: {
     fontStyle: 'italic',
-    color: color.COLOR_BLACK,
+    color: color.COLOR_PRIMARIO,
   },
   quoteAuthor: {
-    color: color.COLOR_BLACK,
+    color: color.COLOR_PRIMARIO,
     fontSize: 12,
     marginTop: 5,
   },
@@ -101,7 +112,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   sectionContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   sectionTitle: {
     fontSize: 22,
