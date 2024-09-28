@@ -3,25 +3,25 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
-import Login from '../src/pages/Login';
-import Home from '../src/pages/Home';
-import Notificaciones from '../src/pages/Notificaciones';
-import Citas from '../src/pages/Citas';
-import CreateCourse from '../src/pages/CreateCourse';
-import Perfil from '../src/pages/Perfil';
-import Register from '../src/pages/Register';
+import Login from './../srcpPrueba/pages/Login';
+import Home from '../srcpPrueba/pages/Home';
+import Notificaciones from '../srcpPrueba/pages/Notificaciones';
+import Citas from '../srcpPrueba/pages/Citas';
+import CreateCourse from '../srcpPrueba/pages/CreateCourse';
+import Perfil from '../srcpPrueba/pages/Perfil';
+import Register from '../srcpPrueba/pages/Register';
 import { useAuth } from '../context/AuthProvider';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent, SettingsScreen } from './Drawer';
-import AdminHome from '../src/pages/AdminHome';
+import AdminHome from '../srcpPrueba/pages/AdminHome';
 import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import color from '../color';
 
-import Sintomas from '../src/pages/Sintomas/Sintomas';
-import PrevencionEnfermedades from '../src/pages/Prevencion/PrevencionEnfermedades,';
-import DetalleFarmacia from '../src/pages/Detalle/DetalleFarmacia';
+import Sintomas from '../srcpPrueba/pages/Sintomas/Sintomas';
+import PrevencionEnfermedades from '../srcpPrueba/pages/Prevencion/PrevencionEnfermedades,';
+import DetalleFarmacia from '../srcpPrueba/pages/Detalle/DetalleFarmacia';
 
 const AuthStack = createStackNavigator();
 
