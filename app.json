@@ -1,9 +1,12 @@
 {
   "expo": {
-    "name": "LearningFLex",
-    "slug": "LearningFLex",
+    "name": "Whipala",
+    "slug": "Whipala",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
+    "androidNavigationBar": {
+      "visible": "immersive"  
+    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

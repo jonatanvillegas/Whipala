@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackground } from 'react-native';
 import color from '../../color';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -63,39 +63,57 @@ export default function Register() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.restante}>
-                <Image
-                    source={require("../../assets/favicon.png")}
-                    style={styles.imagen}
-                />
-            </View>
+                    <ImageBackground
+                source={require("../../assets/ImagenRegister.jpg")}
+                style={styles.restante} // Cambiamos Image por ImageBackground
+                resizeMode="cover" // Para que la imagen se ajuste correctamente
+            >
+            </ImageBackground>
             <View style={styles.Bg}>
                 <Text style={styles.loginText}>Registro</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Nombre"
-                    placeholderTextColor="#aaa"
-                    value={nombre}
-                    onChangeText={text => setNombre(text)}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    placeholderTextColor="#aaa"
-                    value={email}
-                    onChangeText={text => setEmail(text)}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    placeholderTextColor="#aaa"
-                    secureTextEntry
-                    value={password}
-                    onChangeText={text => setPassword(text)}
-                />
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Nombre de Usuario</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Nombre"
+                        placeholderTextColor="#aaa"
+                        value={nombre}
+                        onChangeText={text => setNombre(text)}
+                    />
+                </View>
 
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        placeholderTextColor="#aaa"
+                        value={email}
+                        onChangeText={text => setEmail(text)}
+                    />
+                </View>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Contrasena</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                    />
+                </View>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Repite la contrasena</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                    />
+                </View>
                 <TouchableOpacity style={styles.button} onPress={handleRegister}>
-                    <Text style={styles.buttonText}>Registrar</Text>
+                    <Text style={styles.buttonText}>Crear Cuenta</Text>
                 </TouchableOpacity>
             </View>
             <StatusBar style="auto" />
@@ -129,32 +147,33 @@ const styles = StyleSheet.create({
     },
     loginText: {
         fontSize: 24,
-        color: '#fff',
+        color: color.COLOR_WHITE,
         marginBottom: 20,
         fontWeight: "bold"
     },
     input: {
         width: '100%',
-        height: 40,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        paddingHorizontal: 10,
+        height: 50,
+        backgroundColor: color.COLOR_INPUT,
+        borderRadius: 12,
+        paddingHorizontal: 15,
         marginVertical: 10,
         color: '#000',
     },
     button: {
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        width: '100%',
+        backgroundColor: color.COLOR_SECUNDARIO,
+        borderRadius: 12,
+        width: '60%',
         padding: 10,
-        marginTop: 30,
+        marginTop: 20,
     },
     buttonText: {
-        color: '#000',
+        color: color.COLOR_PRIMARIO,
         fontSize: 16,
         fontWeight: "bold",
         textAlign: "center",
         marginLeft: 10,
+        fontFamily:'Roboto'
     },
     googleButton: {
         flexDirection: "row",

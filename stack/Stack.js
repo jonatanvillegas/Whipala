@@ -19,6 +19,10 @@ import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import color from '../color';
 
+import Sintomas from '../src/pages/Sintomas/Sintomas';
+import PrevencionEnfermedades from '../src/pages/Prevencion/PrevencionEnfermedades,';
+import DetalleFarmacia from '../src/pages/Detalle/DetalleFarmacia';
+
 const AuthStack = createStackNavigator();
 
 const AppStack = createBottomTabNavigator();
@@ -110,7 +114,10 @@ const AppNavigator = () => (
       tabBarStyle: {
         position: 'absolute',
         height: 65,
-        borderRadius: 8,
+        width:400,
+        left:6,
+        bottom:38,
+        borderRadius: 10,
         backgroundColor: color.COLOR_PRIMARIO,
         borderTopWidth: 1
       }
@@ -143,7 +150,12 @@ export const RootNavigator = () => {
           isAdmin === "admin" ? (
             <RootStack.Screen name="Admin" component={AdminNavigator} />
           ) : (
-            <RootStack.Screen name="App" component={AppNavigator} />
+            <>
+              <RootStack.Screen name="App" component={AppNavigator} />
+              <RootStack.Screen name="Sintomas" component={Sintomas} />
+              <RootStack.Screen name="PrevencionEnfermedades" component={PrevencionEnfermedades} />
+              <RootStack.Screen name="DetalleFarmacia" component={DetalleFarmacia} />
+            </>
           )
         ) : (
           <RootStack.Screen name="Auth" component={AuthNavigator} />

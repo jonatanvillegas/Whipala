@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, KeyboardAvoidingViewBase, KeyboardAvoidingView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, KeyboardAvoidingViewBase, KeyboardAvoidingView, ImageBackground } from 'react-native';
 import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
@@ -51,54 +51,50 @@ export default function Login() {
     };
 
     return (
-        <KeyboardAvoidingView >
-            <View >
+        <View style={styles.container}>
+            <ImageBackground
+                source={require("../../assets/ImageLogin.jpg")}
+                style={styles.restante} // Cambiamos Image por ImageBackground
+                resizeMode="cover" // Para que la imagen se ajuste correctamente
+            >
+            </ImageBackground>
 
-                <ScrollView >
 
-                    <View style={styles.restante}>
-                        <Image
-                            source={require("../../assets/favicon.png")}
-                            style={styles.imagen}
-                        />
-                    </View>
-                    <View style={styles.Bg}>
-                        <Text style={styles.loginText}>Ingresa</Text>
+            <View style={styles.Bg}>
+                <Text style={styles.loginText}>Ingresa</Text>
 
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Email"
-                                placeholderTextColor="#aaa"
-                                value={email}
-                                onChangeText={setEmail}
-                            />
-                        </View>
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: color.COLOR_WHITE }}>Contrasena</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Password"
-                                placeholderTextColor="#aaa"
-                                secureTextEntry
-                                value={password}
-                                onChangeText={setPassword}
-                            />
-                        </View>
-                        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                            <Text style={styles.buttonText}>Login</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[styles.googleButton, { gap: 12 }]} onPress={() => console.log("Google Login")}>
-                            <FontAwesome name="google" size={24} color="white" />
-                            <Text style={styles.buttonText}>Login</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.linkText} onPress={() => navigation.navigate('Register')}>Don't have an account yet? Create one</Text>
-                    </View>
-                    <StatusBar style="auto" />
-                </ScrollView>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Correo Electronico</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        placeholderTextColor="#aaa"
+                        value={email}
+                        onChangeText={setEmail}
+                    />
+                </View>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: color.COLOR_WHITE }}>Contraseña</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                        value={password}
+                        onChangeText={setPassword}
+                    />
+                </View>
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                    <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.googleButton, { gap: 12 }]} onPress={() => console.log("Google Login")}>
+                    <FontAwesome name="google" size={24} color="white" />
+                    <Text style={styles.buttonText}>Ingresa con Google</Text>
+                </TouchableOpacity>
+                <Text style={styles.linkText} onPress={() => navigation.navigate('Register')}>No tienes Cuenta aun? Crea una</Text>
             </View>
-        </KeyboardAvoidingView>
+            <StatusBar style="auto" />
+        </View>
     );
 }
 
@@ -123,9 +119,8 @@ const styles = StyleSheet.create({
     restante: {
         flex: 1,
         width: '100%',
-        backgroundColor: color.COLOR_WHITE,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-end',
+
     },
     loginText: {
         fontSize: 24,
@@ -135,38 +130,38 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '90%',
-        height: 40,
-        backgroundColor: color.COLOR_WHITE,
-        borderRadius: 20,
-        paddingHorizontal: 10,
-        marginVertical: 10,
+        height: 50,
+        backgroundColor: color.COLOR_INPUT,
+        borderRadius: 12,
+        paddingHorizontal: 15,
+        marginVertical: 12,
         color: "#000",
     },
     button: {
-        backgroundColor: color.COLOR_WHITE,
-        borderRadius: 20,
+        backgroundColor: color.COLOR_SECUNDARIO,
+        borderRadius: 12,
         width: '60%',
-        padding: 10,
+        padding: 15,
         marginTop: 40,
     },
     buttonText: {
-        color: color.COLOR_SECUNDARIO,
+        color: "white",
         fontSize: 16,
         fontWeight: "bold",
         textAlign: "center",
     },
     googleButton: {
         flexDirection: "row",
-        backgroundColor: '#DB4437',
-        borderRadius: 20,
+        backgroundColor: color.COLOR_BLUE,
+        borderRadius: 12,
         width: '60%',
-        paddingVertical: 12,
+        paddingVertical: 15,
         marginVertical: 10,
         marginTop: 30,
         justifyContent: "center",
     },
     linkText: {
-        color: "white",
+        color: color.COLOR_WHITE,
         fontSize: 14,
         marginVertical: 5,
         textAlign: "justify"
