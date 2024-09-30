@@ -4,6 +4,9 @@
     "slug": "Whipala",
     "version": "1.0.0",
     "orientation": "default",
+    "androidNavigationBar": {
+      "visible": "immersive"  
+    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

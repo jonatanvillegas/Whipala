@@ -4,7 +4,8 @@ import CardCurso from '../components/CardCurso';
 import color from '../../color';
 import { Link } from '@react-navigation/native';
 import CardPlanta from '../components/CardPlantas';
-
+import Sintomas from './Sintomas/Sintomas';
+import { StatusBar } from 'expo-status-bar';
 const Home = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -25,8 +26,14 @@ const Home = () => {
           </Text>
           <Text style={styles.quoteAuthor}>Confucio</Text>
         </View>
-        <Link to={"/ListaFarmaciaPage"}>
-          prueba
+        <Link style={{color:'white'}} to={"/Sintomas"}>
+          sintomas
+        </Link>
+        <Link style={{color:'white'}} to={"/DetalleFarmacia"}>
+          detalle farmacia
+        </Link>
+        <Link style={{color:'white'}} to={"/PrevencionEnfermedades"}>
+          prenvion
         </Link>
       </ImageBackground>
 
@@ -34,6 +41,7 @@ const Home = () => {
         <Section title="Te puede interesar" />
         <SectionPlanta title="Plantas Medicinales" />
       </View>
+      <StatusBar style="auto" hidden={false} />
     </ScrollView>
   );
 };
