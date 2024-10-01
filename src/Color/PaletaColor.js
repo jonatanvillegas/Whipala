@@ -4,6 +4,8 @@ COLOR_WHITE = "#3b3b3b";
 COLOR_INPUT = '#E0E0E0';
 COLOR_BLUE= '#0083BE';
 COLOR_VERDE= '#006157';
+COLOR_NEGRO= '#00000p0'
+COLOR_FONDO = '#f6f8f7'
 
 export default{
     COLOR_PRIMARIO,
@@ -11,5 +13,7 @@ export default{
     COLOR_WHITE,
     COLOR_INPUT,
     COLOR_BLUE,
-    COLOR_VERDE
+    COLOR_VERDE,
+    COLOR_NEGRO,
+    COLOR_FONDO,
 }

@@ -5,7 +5,7 @@ import { RootNavigator } from './stack/Stack';
 */
 
 
-import Aplication  from './src/Farmacia/Components/FarmaciaComponent'
+import Aplication  from './src/Farmacia/Containers/FarmaciaContainer';
 
 export default function App() {
   return (
