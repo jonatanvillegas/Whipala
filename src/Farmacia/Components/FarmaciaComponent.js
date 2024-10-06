@@ -7,20 +7,29 @@ import {
     FlatList,
     SafeAreaView,
     TouchableOpacity,
-    Image
+    Image,
+    TextInput,
+    ScrollView,
+    SectionList
 } from 'react-native'
 
 import EmcabezadoFarmacia from './EncabezadoFarmacia'
 import Color from './../../Color/PaletaColor'
-import { cordovaPopupRedirectResolver } from 'firebase/auth/cordova'
+import Element from './../Components/TopFarmaciaComponent'
+import Elemento from './../Components/DepartamentosFiltroComponent'
+import { AntDesign } from '@expo/vector-icons';
+import ElementoFarmacia from './../Components/FarmaciasListaComponent'
+
 const ListaFarmacia = (props) => {
 
     const {
-        data
+        data,
+        dataFiltro,
+        dataFarmacia
     } = props;
 
     return (
-        <SafeAreaView style={styles.Fondo}>
+        <ScrollView style={styles.Fondo}>
 
             <EmcabezadoFarmacia />
 
@@ -39,86 +48,71 @@ const ListaFarmacia = (props) => {
                     ItemSeparatorComponent={() => <View style={styles.Separadora} />}
                 />
             </View>
-        </SafeAreaView>
 
-    );
-}
+            <View style={styles.DireccionBuscador}>
+                <View style={styles.ContenedorUno}>
+                    <Text style={styles.TopFarmaciaTres}>Farmacias</Text>
+                </View>
+                
+                <View style={styles.ContenedorDos}>
+                    <View style={styles.DireccionDos}>
+                        <View style={styles.Iconos}>
+                            <AntDesign name="right" size={24} color="black" />
+                        </View>
+                        <View style={styles.CajaTexto}>
+                            <TextInput
+                                placeholder="Buscar"
+                                placeholderTextColor="#aaa"
+                            />
+                        </View>
+                    </View>
+                </View>
 
+            </View>
 
-const Element = (props) => {
+            <View style={styles.Separador} />
 
-    const { item } = props;
+            <View style={styles.direccion}>
+                <View>
+                    <AntDesign name="right" size={24} color="black" />
+                </View>
 
-    return (
-        <View>
-            <View style={styles.container}>
+                <View style={styles.FondoListaDos}>
+                    <FlatList
+                        data={dataFiltro}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        ListEmptyComponent={() => <Text>Texto de componente</Text>}
+                        renderItem={
+                            ({ item }) => <Elemento item={item} />
 
-                <View style = {styles.EstiloImagen}>
-                    <Image
-                        style={styles.PruebaImagen}
-                        source={item.Imagen}
+                        }
+                        ItemSeparatorComponent={() => <View style={styles.Separadora} />}
                     />
                 </View>
-                
-                <View style = {styles.EstiloTexto}>
-                     <Text style = {styles.Titulo}> {item.NombreFarmacia} </Text>
-                     <Text style = {styles.Direccion}> {item.Direccion} </Text>
-                </View>
-
-                <View style = {styles.EstiloBoton}>
-
-                    <View style = {styles.ParticionUno}>
-
-                    <TouchableOpacity>
-                                    <View style = {styles.FondoBoton}>
-                                        <View  style = {styles.FondoUnoBoton}>
-                                            <Image
-                                                style={styles.IconoBotton}
-                                                source={require('../../../assets/ImagenCard.jpg')}
-                                            />
-                                        </View>
-
-                                        <View style = {styles.FondoDosBoton}>
-                                            <Text>
-                                                Detalles
-                                            </Text>
-                                        </View>
-
-                                    </View>
-
-                            </TouchableOpacity>
-                    </View>
-
-                    <View style = {styles.ParticionUno}>
-
-                    <TouchableOpacity>
-                                    <View style = {styles.FondoBoton}>
-                                        <View  style = {styles.FondoUnoBoton}>
-                                            <Image
-                                                style={styles.IconoBotton}
-                                                source={require('../../../assets/ImagenCard.jpg')}
-                                            />
-                                        </View>
-
-                                        <View style = {styles.FondoDosBoton}>
-                                            <Text>
-                                                Detalles
-                                            </Text>
-                                        </View>
-
-                                    </View>
-
-                            </TouchableOpacity>
-                    </View>
-
-                </View>
-                
             </View>
-        </View>
+
+            <Text style={styles.TopFarmacia}>Top de Farmacias</Text>
+
+            <View style={styles.FondoListaUno}>
+                <FlatList
+                    data={dataFarmacia}
+                    horizontal={false}
+                    showsHorizontalScrollIndicator={false}
+                    ListEmptyComponent={() => <Text>Texto de componente</Text>}
+                    renderItem={
+                        ({ item }) => <ElementoFarmacia item={item} />
+
+                    }
+                    ItemSeparatorComponent={() => <View style={styles.Separador} />}
+                />
+            </View>
+
+            <View style={styles.Separador} />
+        </ScrollView>
 
     );
 }
-
 
 const styles = StyleSheet.create({
     TopFarmacia: {
@@ -128,20 +122,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: Color.COLOR_NEGRO
     },
-    container: {
-        width: 150,
-        backgroundColor: Color.COLOR_PRIMARIO,
-        height: 250,
-        borderRadius: 20
-    },
-    PruebaImagen: {
-        height: '100%',
-        width: '90%',
-        borderRadius: 15,
-        marginTop: 15
+    TopFarmaciaTres: {
+        marginLeft: 15,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: Color.COLOR_NEGRO
     },
     Separadora: {
         width: 10
+    },
+    Separador: {
+        height: 10
     },
     Fondo: {
         backgroundColor: Color.COLOR_FONDO
@@ -152,61 +143,47 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginTop: 10
     },
-    EstiloImagen:{
-        width: '100%',
-        height: '50%',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    EstiloTexto: {
-        backgroundColor: 'green,',
-
+    FondoListaDos: {
+        backgroundColor: Color.COLOR_FONDO,
         marginLeft: 10,
-        marginRight: 10,
-        marginTop: 15
+        marginRight: 20,
     },
-    EstiloBoton:{
-        //backgroundColor: 'blue',
-        height: '35%',
-    },
-    Titulo:{
-        fontSize: 15,
-        fontWeight: 'bold'
-    },
-    Direccion:{
-        fontSize: 13,
-        fontWeight: 'normal',
-    },
-    FondoBoton:{
-        width: '70%',
+    direccion: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 10
+    },
+    DireccionBuscador:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 30
+    },
+    ContenedorUno: {
+        width: '30%',
+    },
+    ContenedorDos: {
+        backgroundColor: 'white',
+        width: '65%',
+        borderRadius: 25,
+        height: 35,
+    },
+    DireccionDos: {
+        flexDirection: 'row'
+    },
+    Iconos:{
         justifyContent: 'center',
-        height: '90%',
-        backgroundColor: Color.COLOR_SECUNDARIO,
-        padding: 2,
-        height: '85%',
-        borderRadius: 10,
+        alignItems: 'center',
+        height: 35,
+        width: 35,
+        marginLeft: 10
     },
-    FondoUnoBoton:{
-        //backgroundColor: 'yellow',
-        width: '20%',
-    },
-    FondoDosBoton:{
-       // backgroundColor: 'red',
-        width: '80%',
-    },
-    ParticionUno:{
-        //backgroundColor: 'green',
-        width: '100%',
-        height: '50%',
+    CajaTexto:{
         justifyContent: 'center',
-        alignItems: 'center'
-    },
-    IconoBotton: {
-        height: '80%',
-        width:'80%'
-    },
+        height: 35,
+        width: '75%'
+    }
 })
 
 export default ListaFarmacia;
