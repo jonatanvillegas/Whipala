@@ -8,9 +8,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Color from './../../Color/PaletaColor'
+import Color from '../../Color/PaletaColor'
 import { AntDesign } from '@expo/vector-icons';
-const FarmaciasListaComponent = (props) => {
+const MedicoListaComponent = (props) => {
 
     const {
         item
@@ -30,17 +30,16 @@ const FarmaciasListaComponent = (props) => {
 
                 <View style = {styles.EstiloTexto}>
 
-                    <Text style = {styles.Nombre}>{item.NombreFarmacia}</Text>
+                    <Text style = {styles.Nombre}>Dr. {item.NombreDoctor}</Text>
 
                     <View style = {styles.Divisor}/>
 
-                    <Text style = {styles.Direccion}>{item.Direccion}</Text>
+                    <Text style = {styles.Direccion}>{item.Especialidad}</Text>
 
                     <View style = {styles.Divisor}/>
 
                     <View style = {styles.Orientacion}>
-                        <Text style = {styles.HorarioN}>Horario: </Text>
-                        <Text style = {styles.Horario}>{item.HorarioEntrada} - {item.HorarioSalida}</Text>
+                        <Text style = {styles.Horario}>{item.Cuidad} - {item.Departamento}</Text>
                     </View>
                     
                 </View>
@@ -51,7 +50,7 @@ const FarmaciasListaComponent = (props) => {
                     </View> 
                 </View>
             </View>
-            </TouchableOpacity>
+        </TouchableOpacity>
     )
 }
 
@@ -100,19 +99,15 @@ const styles = StyleSheet.create({
     Horario: {
         fontWeight: 'normal',
         fontSize: 13,
-        color:'white'
+        color:'white',
+        marginLeft: 5
     },
-    HorarioN: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        color:'white'
-    },
+
     Orientacion: {
         flexDirection: 'row',
         backgroundColor : Color.COLOR_SECUNDARIO,
         borderRadius: 15,
         height: 22,
-        justifyContent: 'center',
         alignItems :'center'
     },
     Divisor:{
@@ -128,4 +123,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FarmaciasListaComponent;
+export default MedicoListaComponent;
