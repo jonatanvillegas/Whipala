@@ -5,14 +5,14 @@ import { RootNavigator } from './stack/Stack';
 */
 
 
-import Aplication  from './src/Farmacia/Components/FarmaciaComponent'
 
+import Prevencion from './src/Farmacia/Containers/FarmaciaContainer'
 export default function App() {
   return (
    /* <AuthProvider>
       <RootNavigator />
     </AuthProvider>
     */
-    <Aplication/>
+    <Prevencion/>
   );
 }

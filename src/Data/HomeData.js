@@ -1,22 +1,22 @@
 const Intereses = [
     {
-      imageUrl: require("../assets/ImagenCard.jpg"),
+      imageUrl: require("../../assets/ImagenCard.jpg"),
     }
     
   ];
 
-  const segundo = [
+  const Plantas = [
     {
-      imageUrl: require("../assets/PlantaAjo.jpg"),
+      imageUrl: require("../../assets/PlantaAjo.jpg"),
       nombre:'El Ajo'
     },
     {
-      imageUrl: require("../assets/plantaApio.jpg"),
+      imageUrl: require("../../assets/plantaApio.jpg"),
       nombre:'El Apio'
     },
     
     
   ];
   
-  export { Intereses,segundo};
+  export { Intereses,Plantas};
   
