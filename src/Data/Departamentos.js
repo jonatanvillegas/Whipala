@@ -1,5 +1,5 @@
 
- export const departamentos = [
+ export const ListaDepartamentos = [
     {
       "nombre": "Boaco",
       "capital": "Boaco",

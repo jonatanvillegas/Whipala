@@ -1,6 +1,7 @@
 import { View, Text, FlatList, StyleSheet,Image, StatusBar, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { CANCER_INFO } from '../../Data/PrevencionCancer';
+import color from '../../Color/PaletaColor'
 
 export default function PrevencionComponents() {
   return (

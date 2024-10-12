@@ -1,12 +1,9 @@
 import { Text } from 'react-native';
 import 'react-native-gesture-handler';
-/*import { AuthProvider } from './context/AuthProvider';
-import { RootNavigator } from './stack/Stack';
-*/
 
 
 
-import Prevencion from './src/Farmacia/Containers/FarmaciaContainer'
+import Prevencion from './src/Perfil/Containers/PerfilUserContainer'
 export default function App() {
   return (
    /* <AuthProvider>
