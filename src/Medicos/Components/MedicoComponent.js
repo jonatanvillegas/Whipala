@@ -17,7 +17,8 @@ import EmcabezadoFarmacia from './EncabezadoMedico'
 import Color from '../../Color/PaletaColor'
 import Element from './TopMedicoComponent'
 import Elemento from './DepartamentosFiltroComponent'
-import { AntDesign } from '@expo/vector-icons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import ElementoFarmacia from './MedicoListaComponent'
 
 const ListaMedico = (props) => {
@@ -57,7 +58,7 @@ const ListaMedico = (props) => {
                 <View style={styles.ContenedorDos}>
                     <View style={styles.DireccionDos}>
                         <View style={styles.Iconos}>
-                            <AntDesign name="right" size={24} color="black" />
+                        <FontAwesome name="search" size={24} color={Color.COLOR_ICONOS} />
                         </View>
                         <View style={styles.CajaTexto}>
                             <TextInput
@@ -74,7 +75,7 @@ const ListaMedico = (props) => {
 
             <View style={styles.direccion}>
                 <View>
-                    <AntDesign name="right" size={24} color="black" />
+                    <FontAwesome6 name="filter" size={24} color={Color.COLOR_ICONOS} />
                 </View>
 
                 <View style={styles.FondoListaDos}>

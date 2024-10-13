@@ -6,6 +6,7 @@ COLOR_BLUE= '#0083BE';
 COLOR_VERDE= '#006157';
 COLOR_NEGRO= '#00000p0'
 COLOR_FONDO = '#f6f8f7'
+COLOR_ICONOS = '#616161'
 
 export default{
     COLOR_PRIMARIO,
@@ -16,4 +17,5 @@ export default{
     COLOR_VERDE,
     COLOR_NEGRO,
     COLOR_FONDO,
+    COLOR_ICONOS
 }

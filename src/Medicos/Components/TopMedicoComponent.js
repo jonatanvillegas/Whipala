@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import Color from '../../Color/PaletaColor'
-import { AntDesign } from '@expo/vector-icons';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const TopMedicoComponent = (props) => {
 
@@ -37,7 +37,7 @@ const TopMedicoComponent = (props) => {
                 <View style = {styles.Contenido}>
                     <View style = {styles.EstiloBotonDos}>
                         <View style = {styles.Icono2}>
-                            <AntDesign name="right" size={24} color="black" />
+                            <Entypo name="location-pin" size={22} color= {Color.COLOR_BLUE}/>
                         </View>
 
                          <View style ={styles.orientacion}>
