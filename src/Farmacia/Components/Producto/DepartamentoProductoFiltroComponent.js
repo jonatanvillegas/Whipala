@@ -7,8 +7,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Color from './../../Color/PaletaColor'
-const DepartamentosFiltroComponent = (props) => {
+import Color from './../../../Color/PaletaColor'
+
+const DepartamentoProductoFiltroComponent = (props) => {
 
     const { item } = props;
 
@@ -35,19 +36,19 @@ const styles = StyleSheet.create({
     },
     efectoSuperior:{
         backgroundColor: 'white',
-        height: 40,
+        height: 40, 
         width: 150,
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 2,
-        shadowColor: '#dcdcdc',
-        shadowOffset: { width: 0, height: 0.5 },
-        shadowOpacity: 0.80,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4,
         shadowRadius: 20,
         elevation: 3,
         marginBottom: 5
     },
 })
 
-export default DepartamentosFiltroComponent;
+export default DepartamentoProductoFiltroComponent;

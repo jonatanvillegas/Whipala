@@ -169,6 +169,12 @@ const styles = StyleSheet.create({
         width: '65%',
         borderRadius: 25,
         height: 35,
+        
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1.5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 10,
+        elevation: 2,
     },
     DireccionDos: {
         flexDirection: 'row'
@@ -183,7 +189,8 @@ const styles = StyleSheet.create({
     CajaTexto:{
         justifyContent: 'center',
         height: 35,
-        width: '75%'
+        width: '75%',
+        
     }
 })
 

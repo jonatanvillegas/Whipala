@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import ListaFarmacia from './../Components/FarmaciaComponent';
+import Producto from './../../Components/Producto/ProductoComponent';
 
-class ListaFarmaciaContainer extends Component {
+class ProductoContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -15,49 +15,7 @@ class ListaFarmaciaContainer extends Component {
           Direccion: 'San Lorenzo, Boaco',
           HorarioEntrada: '08:00 AM',
           HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/uno.png')
-        },
-
-        {
-          id: 2,
-          NombreFarmacia: 'Farmacia Herbotlan',
-          Direccion: 'Juigalpa Chontales',
-          HorarioEntrada: '08:00 AM',
-          HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/HERBOTLAN.jpg')
-        },
-        {
-          id: 3,
-          NombreFarmacia: 'Farmacia Herbotlan',
-          Direccion: 'Juigalpa Chontales',
-          HorarioEntrada: '08:00 AM',
-          HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/HERBOTLAN.jpg')
-        },
-        {
-          id: 4,
-          NombreFarmacia: 'Farmacia KNOP',
-          Direccion: 'San Lorenzo, Boaco',
-          HorarioEntrada: '08:00 AM',
-          HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/uno.png')
-        },
-
-        {
-          id: 5,
-          NombreFarmacia: 'Farmacia Herbotlan',
-          Direccion: 'Juigalpa Chontales',
-          HorarioEntrada: '08:00 AM',
-          HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/HERBOTLAN.jpg')
-        },
-        {
-          id: 6,
-          NombreFarmacia: 'Farmacia Herbotlan',
-          Direccion: 'Juigalpa Chontales',
-          HorarioEntrada: '08:00 AM',
-          HorarioSalida: '05:00 PM',
-          Imagen: require('../../../assets/HERBOTLAN.jpg')
+          Imagen: require('../../../../assets/uno.png')
         },
 
       ],
@@ -181,7 +139,7 @@ class ListaFarmaciaContainer extends Component {
     const { data, dataFiltro } = this.state;
 
     return (
-      <ListaFarmacia
+      <Producto
         data={data}
         dataFiltro={dataFiltro}
         dataFarmacia={data}
@@ -192,4 +150,4 @@ class ListaFarmaciaContainer extends Component {
 
 }
 
-export default ListaFarmaciaContainer;
+export default ProductoContainer;

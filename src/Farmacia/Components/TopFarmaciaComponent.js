@@ -79,6 +79,12 @@ const styles = StyleSheet.create({
         backgroundColor: Color.COLOR_PRIMARIO,
         height: 250,
         borderRadius: 20,
+        shadowColor: '#dcdcdc',
+        shadowOffset: { width: 0, height: 0.5 },
+        shadowOpacity: 0.80,
+        shadowRadius: 10,
+        elevation: 2 ,
+        arginBottom: 5
     },
     PruebaImagen: {
         height: '100%',
@@ -138,6 +144,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
+
+        shadowColor: '#dcdcdc',
+        shadowOffset: { width: 0, height: 0.5 },
+        shadowOpacity: 0.80,
+        shadowRadius: 10,
+        elevation: 3,
         marginTop: 5
     },
     Icono:{

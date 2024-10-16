@@ -64,7 +64,7 @@ const TopMedicoComponent = (props) => {
         </View>
 
     )
-}
+} 
 
 const styles = StyleSheet.create({
 
@@ -73,6 +73,12 @@ const styles = StyleSheet.create({
         backgroundColor: Color.COLOR_PRIMARIO,
         height: 250,
         borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4,
+        shadowRadius: 20,
+        elevation: 3,
+        marginBottom: 5
     },
     PruebaImagen: {
         height: '100%',

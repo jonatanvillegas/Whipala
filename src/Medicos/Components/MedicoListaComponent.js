@@ -60,7 +60,12 @@ const styles = StyleSheet.create({
         backgroundColor: Color.COLOR_PRIMARIO,
         height: 130,
         borderRadius: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1.5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 10,
+        elevation: 2,
     },
     PruebaImagen: {
         height: '100%',

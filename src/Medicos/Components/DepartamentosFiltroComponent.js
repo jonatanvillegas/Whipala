@@ -35,12 +35,18 @@ const styles = StyleSheet.create({
     },
     efectoSuperior:{
         backgroundColor: 'white',
-        height: 40,
+        height: 40, 
         width: 150,
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 2
+        marginLeft: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4,
+        shadowRadius: 20,
+        elevation: 3,
+        marginBottom: 5
     },
 })
 
