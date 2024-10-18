@@ -13,7 +13,7 @@ const DetalleFarmaciaComponent = () => {
         <View style={styles.container}>
             <View style={styles.restante}>
                 <Image
-                    source={require("../../../assets/farmaciaDetalle.png")}
+                    source={require("../../../assets/uno.png")}
                     style={styles.imagen}
                 />
             </View>

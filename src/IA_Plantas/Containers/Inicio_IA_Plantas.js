@@ -65,8 +65,8 @@ class componentName extends Component {
                 this.setState({
                     loading: false,
                     plantInfo: {
-                        name: "Lavender",
-                        description: "Lavender is known for its calming and relaxing properties."
+                        name: "Aloe Vera",
+                        description: "Aloe Vera is a medicinal plant known for its soothing and healing properties."
                     }
                 });
             }, 2000);

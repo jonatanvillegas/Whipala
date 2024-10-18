@@ -13,8 +13,10 @@ import {
 } from 'react-native';
 import { COLOR_WHITE, COLOR_INPUT } from '../../Color/PaletaColor';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+    const navigation = useNavigation()
     return (
         <View style={styles.container}>
             <ImageBackground

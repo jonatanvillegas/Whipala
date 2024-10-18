@@ -3,25 +3,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
-import Login from './../srcpPrueba/pages/Login';
-import Home from '../srcpPrueba/pages/Home';
-import Notificaciones from '../srcpPrueba/pages/Notificaciones';
-import Citas from '../srcpPrueba/pages/Citas';
-import CreateCourse from '../srcpPrueba/pages/CreateCourse';
-import Perfil from '../srcpPrueba/pages/Perfil';
-import Register from '../srcpPrueba/pages/Register';
+import Login from '../src/Login/containers/LoginContainer';
+import Home from '../src/Inicio/Containers/InicioContainer';
+import Perfil from '../src/Perfil/Containers/PerfilUserContainer';
+import Register from '../src/Registro/containers/RegistroContainer';
 import { useAuth } from '../context/AuthProvider';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent, SettingsScreen } from './Drawer';
-import AdminHome from '../srcpPrueba/pages/AdminHome';
 import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
-import color from '../color';
+import Color from '../src/Color/PaletaColor'
 
-import Sintomas from '../srcpPrueba/pages/Sintomas/Sintomas';
-import PrevencionEnfermedades from '../srcpPrueba/pages/Prevencion/PrevencionEnfermedades,';
-import DetalleFarmacia from '../srcpPrueba/pages/Detalle/DetalleFarmacia';
+import Sintomas from '../src/Sintomas/Containers/SintomasContainer';
+import PrevencionEnfermedades from '../src/Prevencion/Containers/PrevencionContainer';
+import DetalleFarmacia from '../src/DetalleFarmacia/Containers/DetalleFarmaciaContainer';
 
 const AuthStack = createStackNavigator();
 
@@ -63,11 +59,11 @@ const TabButton = (props) => {
         ref={viewRef}
         duration={600}
         style={styles.container}>
-        <View style={[styles.btn, { borderColor: focused ? color.COLOR_WHITE : color.COLOR_PRIMARIO }]}>
+        <View style={[styles.btn, { borderColor: focused ? Color.COLOR_WHITE : Color.COLOR_PRIMARIO }]}>
           <Animatable.View
             ref={circleRef}
             style={styles.circle} />
-          <AntDesign name={item.icon} size={16} color={color.COLOR_WHITE} />
+          <AntDesign name={item.icon} size={16} color={Color.COLOR_WHITE} />
         </View>
         <Animatable.Text
           ref={textRef}
@@ -80,10 +76,7 @@ const TabButton = (props) => {
 }
 
 const userScreen = [
-  { routes: "Citas", label: "Citas", icon: "calendar", component: Citas },
-  { routes: "Notificaciones", label: "Notificaciones", icon: "notification", component: Notificaciones },
   { routes: "Home", label: "Home", icon: "home", component: Home },
-  { routes: "CreateCourse", label: "CreateCourse", icon: "pluscircleo", component: CreateCourse },
   { routes: "Perfil", label: "Perfil", icon: "user", component: Perfil },
 ]
 const AdminNavigator = () => (
@@ -118,7 +111,7 @@ const AppNavigator = () => (
         left:6,
         bottom:38,
         borderRadius: 10,
-        backgroundColor: color.COLOR_PRIMARIO,
+        backgroundColor: Color.COLOR_PRIMARIO,
         borderTopWidth: 1
       }
     }}
@@ -190,7 +183,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: color.COLOR_PRIMARIO,
+    backgroundColor: Color.COLOR_PRIMARIO,
     borderRadius: 25
   }
 })
