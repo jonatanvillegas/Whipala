@@ -1,35 +1,28 @@
-import {
-    View,
-    Text,
-    StyleSheet,
-    ImageBackground,
-    TextInput,
-    TouchableOpacity,
-    SafeAreaView,
-    KeyboardAvoidingView,
-    ScrollView,
-    StatusBar
-} from 'react-native';
-import { COLOR_WHITE, COLOR_INPUT } from '../../Color/PaletaColor';
-import { FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import {useState} from 'react'
+import React, { useState } from 'react';
+import { Alert, ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { useNavigation } from '@react-navigation/native'; // Para la navegación
+import { auth, db } from '../../../firebaseConfig'; // Asegúrate de que la configuración de Firebase esté correcta
+import { useAuth } from '../../../context/AuthProvider';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-const Login = () => {
+const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { setUser } = useAuth();
-    const navigation = useNavigation();
+    const { setUser } = useAuth(); // Obtén la función setUser de tu contexto de autenticación
+    const navigation = useNavigation(); // Para navegar entre pantallas
 
     const handleLogin = async () => {
-        const cleanedEmail = email.trim();
-        if (cleanedEmail === "" || password === "") {
+        const cleanedEmail = email.trim(); // Eliminamos los espacios en blanco al inicio y al final del email
+        if (cleanedEmail === '' || password === '') {
             Alert.alert('Error', 'Por favor, introduce un correo electrónico y una contraseña válidos.');
             return;
         }
 
         try {
+            // Iniciar sesión con email y contraseña
             const userCredential = await signInWithEmailAndPassword(auth, cleanedEmail, password);
             const user = userCredential.user;
 
@@ -39,20 +32,23 @@ const Login = () => {
 
             if (userDoc.exists()) {
                 const userData = userDoc.data();
-                setUser({ uid: user.uid, ...userData });
+                setUser({ uid: user.uid, ...userData }); // Actualiza los datos del usuario en el estado global
                 console.log('Usuario logueado y datos obtenidos:', userData);
+
                 Alert.alert('Inicio de sesión exitoso', 'El usuario ha iniciado sesión exitosamente.');
-                // Aquí puedes redirigir al usuario a otra pantalla o realizar alguna acción adicional
+
+                // Redirige al usuario a la pantalla principal (ajusta el nombre de la ruta según tu aplicación)
+                navigation.navigate('Home');
             } else {
                 console.error('No se encontraron datos del usuario en Firestore');
                 Alert.alert('Error', 'No se encontraron datos del usuario en Firestore.');
             }
         } catch (error) {
-            const errorMessage = error.message;
-            console.error('Error en el inicio de sesión:', errorMessage);
-            Alert.alert('Error en el inicio de sesión', errorMessage);
+            console.error('Error en el inicio de sesión:', error.message);
+            Alert.alert('Error en el inicio de sesión', error.message);
         }
     };
+
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -69,8 +65,9 @@ const Login = () => {
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                 >
-                    <View style={{display:'flex',justifyContent:'center',
-                        alignItems:'center'
+                    <View style={{
+                        display: 'flex', justifyContent: 'center',
+                        alignItems: 'center'
                     }}>
 
                         <View style={styles.inputWrapper}>
@@ -79,6 +76,10 @@ const Login = () => {
                                 style={styles.input}
                                 placeholder="Email"
                                 placeholderTextColor="#aaa"
+                                value={email}
+                                onChangeText={setEmail}
+                                autoCapitalize="none"
+                                keyboardType="email-address"
                             />
                         </View>
                         <View style={styles.inputWrapper}>
@@ -88,9 +89,12 @@ const Login = () => {
                                 placeholder="Password"
                                 placeholderTextColor="#aaa"
                                 secureTextEntry
+                                value={password}
+                                onChangeText={setPassword}
+
                             />
                         </View>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={handleLogin}>
                             <Text style={styles.buttonText}>Entrar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -157,7 +161,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         paddingHorizontal: 15,
         color: "#000",
-        marginTop:5
+        marginTop: 5
     },
     button: {
         backgroundColor: COLOR_SECUNDARIO,
@@ -185,9 +189,10 @@ const styles = StyleSheet.create({
     linkText: {
         color: COLOR_WHITE,
         fontSize: 14,
-        marginBottom:30,
+        marginBottom: 30,
         textAlign: "center",
     },
 });
 
-export default Login;
+
+export default LoginScreen;
