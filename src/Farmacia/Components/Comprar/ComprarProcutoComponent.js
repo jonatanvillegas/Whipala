@@ -221,8 +221,7 @@ const styles = StyleSheet.create({
     },
     InfoBoton: {
         fontSize: 18,
-        fontWeight: 'bold',
-        color: 'white'
+        fontWeight: 'bold'
     },
 })
 
