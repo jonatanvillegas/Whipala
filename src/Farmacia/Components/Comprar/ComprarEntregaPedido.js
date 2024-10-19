@@ -118,7 +118,7 @@ const ComprarEntregaPedido = () => {
 
                                         <View>
                                             <Text style={styles.InfoBoton}>
-                                                Agendar Cita
+                                                Guardar
                                             </Text>
                                         </View>
                                     </View>

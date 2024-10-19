@@ -7,7 +7,7 @@ import {
     TextInput,
     TouchableOpacity,
     ScrollView
-} from 'react-native';
+} from 'react-native'; 
 
 import Color from './../../../Color/PaletaColor'
 import Entypo from '@expo/vector-icons/Entypo';
@@ -118,7 +118,7 @@ const ComprarProducto = () => {
 
                                         <View>
                                             <Text style={styles.InfoBoton}>
-                                                Agendar Cita
+                                                Agregar
                                             </Text>
                                         </View>
                                     </View>
@@ -221,7 +221,8 @@ const styles = StyleSheet.create({
     },
     InfoBoton: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     },
 })
 
