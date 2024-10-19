@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import Color from './../../../Color/PaletaColor'
-import Entypo from '@expo/vector-icons/Entypo';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Elemento from './../Comprar/EtiquetaDireccion'
 
 const ComprarEntregaPedido = (props) => {
@@ -68,7 +68,7 @@ const ComprarEntregaPedido = (props) => {
                 <TouchableOpacity>
                     <View style={styles.BotonEstilo}>
                         <View>
-                            <Entypo name="newsletter" size={22} color="white" />
+                        <MaterialIcons name="add-circle" size={22} color="white" />
                         </View>
 
                         <View style={styles.Separador2} />
