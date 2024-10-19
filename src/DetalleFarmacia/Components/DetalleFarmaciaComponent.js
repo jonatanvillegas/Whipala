@@ -7,8 +7,15 @@ import color from '../../Color/PaletaColor'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Entypo from '@expo/vector-icons/Entypo';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const DetalleFarmaciaComponent = () => {
+    const navigation = useNavigation();
+    const handlePress = () => {
+        // Aquí puedes pasar el `item` a la vista de destino
+        navigation.navigate('ListaProductos');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.restante}>
@@ -59,7 +66,7 @@ const DetalleFarmaciaComponent = () => {
                     }}>
                         <View style={{flexDirection:'row', gap:10,alignItems:'center'}}>
                             <FontAwesome5 name="store" size={15} color="white" />
-                            <Text style={{ color: 'white' }}>
+                            <Text style={{ color: 'white' }} onPress={handlePress}>
                                 Catalogo de Productos
                             </Text>
                         </View>

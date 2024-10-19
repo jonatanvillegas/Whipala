@@ -17,11 +17,18 @@ import EmcabezadoFarmacia from './EncabezadoMedico'
 import Color from '../../Color/PaletaColor'
 import Element from './TopMedicoComponent'
 import Elemento from './DepartamentosFiltroComponent'
-import { AntDesign } from '@expo/vector-icons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import ElementoFarmacia from './MedicoListaComponent'
+import { useNavigation } from '@react-navigation/native'
 
 const ListaMedico = (props) => {
-
+    const navigation = useNavigation();
+    const handlePress = (item) => {
+        // Aquí puedes pasar el `item` a la vista de destino
+        navigation.navigate('PerfilDelMedico', { farmacia: item });
+    };
+    
     const {
         data,
         dataFiltro,
@@ -41,10 +48,11 @@ const ListaMedico = (props) => {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     ListEmptyComponent={() => <Text>Texto de componente</Text>}
-                    renderItem={
-                        ({ item }) => <Element item={item} />
-
-                    }
+                    renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => handlePress(item, 'PerfilDelMedico')}>
+                            <Element item={item} />
+                        </TouchableOpacity>
+                    )}
                     ItemSeparatorComponent={() => <View style={styles.Separadora} />}
                 />
             </View>
@@ -57,7 +65,7 @@ const ListaMedico = (props) => {
                 <View style={styles.ContenedorDos}>
                     <View style={styles.DireccionDos}>
                         <View style={styles.Iconos}>
-                            <AntDesign name="right" size={24} color="black" />
+                        <FontAwesome name="search" size={24} color={Color.COLOR_ICONOS} />
                         </View>
                         <View style={styles.CajaTexto}>
                             <TextInput
@@ -74,7 +82,7 @@ const ListaMedico = (props) => {
 
             <View style={styles.direccion}>
                 <View>
-                    <AntDesign name="right" size={24} color="black" />
+                    <FontAwesome6 name="filter" size={24} color={Color.COLOR_ICONOS} />
                 </View>
 
                 <View style={styles.FondoListaDos}>
@@ -168,6 +176,12 @@ const styles = StyleSheet.create({
         width: '65%',
         borderRadius: 25,
         height: 35,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1.5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 10,
+        elevation: 2,
     },
     DireccionDos: {
         flexDirection: 'row'

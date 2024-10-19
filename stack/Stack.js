@@ -14,10 +14,20 @@ import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { animate1, animate2, circle1, circle2 } from '../Animated/animated';
 import Color from '../src/Color/PaletaColor'
-
+import Medicos from '../src/Medicos/Containers/MedicosContainer'
 import Sintomas from '../src/Sintomas/Containers/SintomasContainer';
 import PrevencionEnfermedades from '../src/Prevencion/Containers/PrevencionContainer';
 import DetalleFarmacia from '../src/DetalleFarmacia/Containers/DetalleFarmaciaContainer';
+import ProductoList from '../src/Farmacia/Containers/Producto/ProductoContainer'
+import ComprarProductos from '../src/Farmacia/Containers/Comprar/ComprarProductoContainer'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import PerfilDelMedico from '../src/Medicos/Containers/PerfilMedicoContainer'
+
+import Farmacias from '../src/Farmacia/Containers/FarmaciaContainer'
+
+import Chatbot from '../src/ChatBot/container/ChatbotContainer'
+import AgendarCita from '../src/AgendarCita/Containers/AgendarCitaContainer'
+
 
 const AuthStack = createStackNavigator();
 
@@ -59,11 +69,11 @@ const TabButton = (props) => {
         ref={viewRef}
         duration={600}
         style={styles.container}>
-        <View style={[styles.btn, { borderColor: focused ? Color.COLOR_WHITE : Color.COLOR_PRIMARIO }]}>
+        <View style={[styles.btn, { borderColor: focused ? Color.COLOR_PRIMARIO : Color.COLOR_SECUNDARIO }]}>
           <Animatable.View
             ref={circleRef}
             style={styles.circle} />
-          <AntDesign name={item.icon} size={16} color={Color.COLOR_WHITE} />
+          <AntDesign name={item.icon} size={16} color={Color.COLOR_PRIMARIO} />
         </View>
         <Animatable.Text
           ref={textRef}
@@ -76,7 +86,10 @@ const TabButton = (props) => {
 }
 
 const userScreen = [
+  {routes:'Medicos',label:'Medico',icon:"Medico",component:Medicos},
+  // {routes:'Citas',label:'Citas',icon:'Citas',}
   { routes: "Home", label: "Home", icon: "home", component: Home },
+  {routes:"Farmacia",label:'Farmacias',icon:'local-pharmacy',component:Farmacias},
   { routes: "Perfil", label: "Perfil", icon: "user", component: Perfil },
 ]
 const AdminNavigator = () => (
@@ -111,7 +124,7 @@ const AppNavigator = () => (
         left:6,
         bottom:38,
         borderRadius: 10,
-        backgroundColor: Color.COLOR_PRIMARIO,
+        backgroundColor: Color.COLOR_SECUNDARIO,
         borderTopWidth: 1
       }
     }}
@@ -145,9 +158,13 @@ export const RootNavigator = () => {
           ) : (
             <>
               <RootStack.Screen name="App" component={AppNavigator} />
-              <RootStack.Screen name="Sintomas" component={Sintomas} />
+              <RootStack.Screen name="chatbot" component={Chatbot} />
               <RootStack.Screen name="PrevencionEnfermedades" component={PrevencionEnfermedades} />
               <RootStack.Screen name="DetalleFarmacia" component={DetalleFarmacia} />
+              <RootStack.Screen name="ListaProductos" component={ProductoList} />
+              <RootStack.Screen name="ComprarProducto" component={ComprarProductos} />
+              <RootStack.Screen name="PerfilDelMedico" component={PerfilDelMedico} />
+              <RootStack.Screen name="AgendarCita" component={AgendarCita} />
             </>
           )
         ) : (
@@ -183,7 +200,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Color.COLOR_PRIMARIO,
+    backgroundColor: Color.COLOR_SECUNDARIO,
     borderRadius: 25
   }
 })

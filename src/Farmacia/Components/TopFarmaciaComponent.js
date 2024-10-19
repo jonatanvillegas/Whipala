@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 import Color from './../../Color/PaletaColor'
-import { AntDesign } from '@expo/vector-icons';
+import Entypo from '@expo/vector-icons/Entypo';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const TopFarmaciaComponent = (props) => {
 
@@ -36,7 +37,7 @@ const TopFarmaciaComponent = (props) => {
                     <TouchableOpacity>
                         <View style = {styles.EstiloBoton}>
                             <View style = {styles.Icono}>
-                                <AntDesign name="right" size={24} color="white" />
+                                <Ionicons name="information-circle" size={24} color="white" />
                             </View>
 
                             <View style = {styles.Texto}>
@@ -52,11 +53,11 @@ const TopFarmaciaComponent = (props) => {
                     <TouchableOpacity>
                         <View style = {styles.EstiloBotonDos}>
                             <View style = {styles.Icono}>
-                                <AntDesign name="right" size={24} color="white" />
+                                <Entypo name="location-pin" size={22} color= 'white'/>
                             </View>
 
                             <View style = {styles.Texto}>
-                                <Text style = {styles.InfoBoton}>Unicación</Text>
+                                <Text style = {styles.InfoBoton}>Ubicación</Text>
                             </View>
 
                         </View>
@@ -78,6 +79,12 @@ const styles = StyleSheet.create({
         backgroundColor: Color.COLOR_PRIMARIO,
         height: 250,
         borderRadius: 20,
+        shadowColor: '#dcdcdc',
+        shadowOffset: { width: 0, height: 0.5 },
+        shadowOpacity: 0.80,
+        shadowRadius: 10,
+        elevation: 2 ,
+        arginBottom: 5
     },
     PruebaImagen: {
         height: '100%',
@@ -137,6 +144,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
+
+        shadowColor: '#dcdcdc',
+        shadowOffset: { width: 0, height: 0.5 },
+        shadowOpacity: 0.80,
+        shadowRadius: 10,
+        elevation: 3,
         marginTop: 5
     },
     Icono:{

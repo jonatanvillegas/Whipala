@@ -40,7 +40,13 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 2
+        marginLeft: 2,
+        shadowColor: '#dcdcdc',
+        shadowOffset: { width: 0, height: 0.5 },
+        shadowOpacity: 0.80,
+        shadowRadius: 20,
+        elevation: 3,
+        marginBottom: 5
     },
 })
 

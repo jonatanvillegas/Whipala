@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import RegistroComponent from '../components/RegistroComponent';
+import  { RegisterScreen } from '../components/RegistroComponent';
 
 export default class componentName extends Component {
 
@@ -10,7 +10,7 @@ export default class componentName extends Component {
   }
   render() {
     return (
-      <RegistroComponent/>
+      <RegisterScreen/>
     );
   }
 }

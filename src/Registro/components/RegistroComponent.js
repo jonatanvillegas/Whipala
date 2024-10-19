@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'; // Asegúrate de importar Firebase Auth correctamente
 import { doc, setDoc } from 'firebase/firestore'; // Asegúrate de importar Firestore correctamente
 import { auth, db } from '../../../firebaseConfig'
 import color from '../../Color/PaletaColor'
-export class RegistroComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            nombre: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        };
-    }
+import { useNavigation } from '@react-navigation/native';
 
-    handleRegister = async () => {
-        const { nombre, email, password, confirmPassword } = this.state;
-        const { navigation } = this.props;
+export const RegisterScreen = () => {
+    const [nombre, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
+    const navigation = useNavigation(); // Hook para la navegación
+
+    const handleRegister = async () => {
         if (email.trim() === "" || password === "") {
             Alert.alert('Error', 'Por favor, introduce un correo electrónico y una contraseña válidos.');
             return;
@@ -50,88 +46,80 @@ export class RegistroComponent extends Component {
 
             Alert.alert('Registro exitoso', 'El usuario se ha registrado exitosamente.');
 
-            // Navegar a la vista de inicio de sesión
+            // Redirigir a la pantalla de inicio de sesión
             navigation.navigate('Login');
         } catch (error) {
-            console.error('Error en el registro:', error.code, error.message);
+            console.error('Error en el registro:', error.message);
             Alert.alert('Error en el registro', error.message);
         }
-
-        // Limpiar los campos
-        this.setState({
-            nombre: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-        });
     };
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <ImageBackground
-                    source={require("../../../assets/ImagenRegister.jpg")}
-                    style={styles.restante}
-                    resizeMode="cover"
-                />
-                <View style={styles.Bg}>
-                    <Text style={styles.loginText}>Registro</Text>
-                    <ScrollView
-                        style={styles.scrollContainer}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                    >
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: 'white' }}>Nombre de Usuario</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Nombre"
-                                placeholderTextColor="#aaa"
-                                value={this.state.nombre}
-                                onChangeText={(nombre) => this.setState({ nombre })}
-                            />
-                        </View>
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: 'white' }}>Correo Electrónico</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Email"
-                                placeholderTextColor="#aaa"
-                                value={this.state.email}
-                                onChangeText={(email) => this.setState({ email })}
-                            />
-                        </View>
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: 'white' }}>Contraseña</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Password"
-                                placeholderTextColor="#aaa"
-                                secureTextEntry
-                                value={this.state.password}
-                                onChangeText={(password) => this.setState({ password })}
-                            />
-                        </View>
-                        <View style={{ width: "95%", display: "flex" }}>
-                            <Text style={{ color: 'white' }}>Repite la Contraseña</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Confirmar Password"
-                                placeholderTextColor="#aaa"
-                                secureTextEntry
-                                value={this.state.confirmPassword}
-                                onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
-                            />
-                        </View>
-                    </ScrollView>
-                    <TouchableOpacity style={styles.button} onPress={this.handleRegister}>
-                        <Text style={styles.buttonText}>Crear Cuenta</Text>
-                    </TouchableOpacity>
+
+    return (
+        <View style={styles.container}>
+        <ImageBackground
+            source={require("../../../assets/ImagenRegister.jpg")}
+            style={styles.restante}
+            resizeMode="cover"
+        />
+        <View style={styles.Bg}>
+            <Text style={styles.loginText}>Registro</Text>
+            <ScrollView
+                style={styles.scrollContainer}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+            >
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: 'white' }}>Nombre de Usuario</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Nombre"
+                        placeholderTextColor="#aaa"
+                        value={nombre}
+                        onChangeText={setNombre} // Corregido
+                    />
                 </View>
-                <StatusBar style="auto" />
-            </View>
-        );
-    }
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: 'white' }}>Correo Electrónico</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        placeholderTextColor="#aaa"
+                        value={email}
+                        onChangeText={setEmail} // Corregido
+                    />
+                </View>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: 'white' }}>Contraseña</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                        value={password}
+                        onChangeText={setPassword} // Corregido
+                    />
+                </View>
+                <View style={{ width: "95%", display: "flex" }}>
+                    <Text style={{ color: 'white' }}>Repite la Contraseña</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Confirmar Password"
+                        placeholderTextColor="#aaa"
+                        secureTextEntry
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword} // Corregido
+                    />
+                </View>
+            </ScrollView>
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+                <Text style={styles.buttonText}>Crear Cuenta</Text>
+            </TouchableOpacity>
+        </View>
+        <StatusBar style="auto" />
+    </View>
+    );
+
 }
 
 const styles = StyleSheet.create({
@@ -191,4 +179,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RegistroComponent;

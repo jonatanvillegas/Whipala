@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import Color from '../../Color/PaletaColor'
-import { AntDesign } from '@expo/vector-icons';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const TopMedicoComponent = (props) => {
 
@@ -37,7 +37,7 @@ const TopMedicoComponent = (props) => {
                 <View style = {styles.Contenido}>
                     <View style = {styles.EstiloBotonDos}>
                         <View style = {styles.Icono2}>
-                            <AntDesign name="right" size={24} color="black" />
+                            <Entypo name="location-pin" size={22} color= {Color.COLOR_BLUE}/>
                         </View>
 
                          <View style ={styles.orientacion}>
@@ -64,7 +64,7 @@ const TopMedicoComponent = (props) => {
         </View>
 
     )
-}
+} 
 
 const styles = StyleSheet.create({
 
@@ -73,6 +73,12 @@ const styles = StyleSheet.create({
         backgroundColor: Color.COLOR_PRIMARIO,
         height: 250,
         borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.4,
+        shadowRadius: 20,
+        elevation: 3,
+        marginBottom: 5
     },
     PruebaImagen: {
         height: '100%',

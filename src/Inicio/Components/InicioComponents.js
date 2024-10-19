@@ -3,8 +3,12 @@ import { ImageBackground, ScrollView, StatusBar, StyleSheet, Text, View } from '
 import { FontAwesome } from '@expo/vector-icons';
 import CardInicio from './CardInicio';
 import CardPlanta from './CardPlantas';
+import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 const InicioComponents = () => {
+    const navigation = useNavigation()
+    
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <ImageBackground style={styles.imageContainer}
@@ -13,7 +17,7 @@ const InicioComponents = () => {
             >
                 <View style={styles.user}>
                     <View style={styles.icon}>
-                        <Text style={styles.iconText}>E</Text>
+                        <Button  textColor='white' onPress={()=>navigation.navigate('chatbot')} >E</Button>
                     </View>
                     <Text style={styles.userText}>¿Qué sientes hoy?</Text>
                 </View>

@@ -1,36 +1,35 @@
-import React from 'react'
-
+import React from 'react';
 import {
     View,
     Text,
     StyleSheet,
     FlatList,
-    SafeAreaView,
-    TouchableOpacity,
-    Image,
-    TextInput,
     ScrollView,
-    SectionList
-} from 'react-native'
-
-import EmcabezadoFarmacia from './EncabezadoFarmacia'
-import Color from './../../Color/PaletaColor'
-import Element from './../Components/TopFarmaciaComponent'
-import Elemento from './../Components/DepartamentosFiltroComponent'
-import { AntDesign } from '@expo/vector-icons';
-import ElementoFarmacia from './../Components/FarmaciasListaComponent'
+    TextInput,
+    TouchableOpacity,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
+import EmcabezadoFarmacia from './EncabezadoFarmacia';
+import Color from './../../Color/PaletaColor';
+import Element from './../Components/TopFarmaciaComponent';
+import Elemento from './../Components/DepartamentosFiltroComponent';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import ElementoFarmacia from './../Components/FarmaciasListaComponent';
 
 const ListaFarmacia = (props) => {
+    const navigation = useNavigation(); // Usa useNavigation para obtener la navegación
 
-    const {
-        data,
-        dataFiltro,
-        dataFarmacia
-    } = props;
+    const { data, dataFiltro, dataFarmacia } = props;
+
+    // Función para manejar la navegación a diferentes vistas según el tipo de componente
+    const handlePress = (item, route) => {
+        // Aquí puedes pasar el `item` a la vista de destino
+        navigation.navigate(route, { itemData: item });
+    };
 
     return (
         <ScrollView style={styles.Fondo}>
-
             <EmcabezadoFarmacia />
 
             <Text style={styles.TopFarmacia}>Top de Farmacias</Text>
@@ -41,10 +40,11 @@ const ListaFarmacia = (props) => {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     ListEmptyComponent={() => <Text>Texto de componente</Text>}
-                    renderItem={
-                        ({ item }) => <Element item={item} />
-
-                    }
+                    renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => handlePress(item, 'PerfilDelMedico')}>
+                            <Element item={item} />
+                        </TouchableOpacity>
+                    )}
                     ItemSeparatorComponent={() => <View style={styles.Separadora} />}
                 />
             </View>
@@ -53,28 +53,24 @@ const ListaFarmacia = (props) => {
                 <View style={styles.ContenedorUno}>
                     <Text style={styles.TopFarmaciaTres}>Farmacias</Text>
                 </View>
-                
+
                 <View style={styles.ContenedorDos}>
                     <View style={styles.DireccionDos}>
                         <View style={styles.Iconos}>
-                            <AntDesign name="right" size={24} color="black" />
+                            <FontAwesome name="search" size={24} color={Color.COLOR_ICONOS} />
                         </View>
                         <View style={styles.CajaTexto}>
-                            <TextInput
-                                placeholder="Buscar"
-                                placeholderTextColor="#aaa"
-                            />
+                            <TextInput placeholder="Buscar" placeholderTextColor="#aaa" />
                         </View>
                     </View>
                 </View>
-
             </View>
 
             <View style={styles.Separador} />
 
             <View style={styles.direccion}>
                 <View>
-                    <AntDesign name="right" size={24} color="black" />
+                    <FontAwesome6 name="filter" size={24} color={Color.COLOR_ICONOS} />
                 </View>
 
                 <View style={styles.FondoListaDos}>
@@ -83,10 +79,11 @@ const ListaFarmacia = (props) => {
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                         ListEmptyComponent={() => <Text>Texto de componente</Text>}
-                        renderItem={
-                            ({ item }) => <Elemento item={item} />
-
-                        }
+                        renderItem={({ item }) => (
+                            <TouchableOpacity onPress={() => handlePress(item, 'FiltroFarmacia')}>
+                                <Elemento item={item} />
+                            </TouchableOpacity>
+                        )}
                         ItemSeparatorComponent={() => <View style={styles.Separadora} />}
                     />
                 </View>
@@ -100,19 +97,19 @@ const ListaFarmacia = (props) => {
                     horizontal={false}
                     showsHorizontalScrollIndicator={false}
                     ListEmptyComponent={() => <Text>Texto de componente</Text>}
-                    renderItem={
-                        ({ item }) => <ElementoFarmacia item={item} />
-
-                    }
+                    renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => handlePress(item, 'FarmaciaDetalles')}>
+                            <ElementoFarmacia item={item} />
+                        </TouchableOpacity>
+                    )}
                     ItemSeparatorComponent={() => <View style={styles.Separador} />}
                 />
             </View>
 
             <View style={styles.Separador} />
         </ScrollView>
-
     );
-}
+};
 
 const styles = StyleSheet.create({
     TopFarmacia: {
@@ -155,7 +152,7 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginTop: 10
     },
-    DireccionBuscador:{
+    DireccionBuscador: {
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 30
@@ -168,21 +165,28 @@ const styles = StyleSheet.create({
         width: '65%',
         borderRadius: 25,
         height: 35,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1.5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 10,
+        elevation: 2,
     },
     DireccionDos: {
         flexDirection: 'row'
     },
-    Iconos:{
+    Iconos: {
         justifyContent: 'center',
         alignItems: 'center',
         height: 35,
         width: 35,
         marginLeft: 10
     },
-    CajaTexto:{
+    CajaTexto: {
         justifyContent: 'center',
         height: 35,
-        width: '75%'
+        width: '75%',
+
     }
 })
 
