@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     View,
     Text,
@@ -14,9 +13,46 @@ import {
 import { COLOR_WHITE, COLOR_INPUT } from '../../Color/PaletaColor';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import {useState} from 'react'
 
 const Login = () => {
-    const navigation = useNavigation()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { setUser } = useAuth();
+    const navigation = useNavigation();
+
+    const handleLogin = async () => {
+        const cleanedEmail = email.trim();
+        if (cleanedEmail === "" || password === "") {
+            Alert.alert('Error', 'Por favor, introduce un correo electrónico y una contraseña válidos.');
+            return;
+        }
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, cleanedEmail, password);
+            const user = userCredential.user;
+
+            // Obtener el documento del usuario desde Firestore
+            const userDocRef = doc(db, 'users', user.uid);
+            const userDoc = await getDoc(userDocRef);
+
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                setUser({ uid: user.uid, ...userData });
+                console.log('Usuario logueado y datos obtenidos:', userData);
+                Alert.alert('Inicio de sesión exitoso', 'El usuario ha iniciado sesión exitosamente.');
+                // Aquí puedes redirigir al usuario a otra pantalla o realizar alguna acción adicional
+            } else {
+                console.error('No se encontraron datos del usuario en Firestore');
+                Alert.alert('Error', 'No se encontraron datos del usuario en Firestore.');
+            }
+        } catch (error) {
+            const errorMessage = error.message;
+            console.error('Error en el inicio de sesión:', errorMessage);
+            Alert.alert('Error en el inicio de sesión', errorMessage);
+        }
+    };
     return (
         <View style={styles.container}>
             <ImageBackground

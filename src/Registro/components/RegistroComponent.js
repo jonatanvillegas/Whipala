@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import {
-    ImageBackground,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-    Alert
-} from 'react-native';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db } from '../../../firebaseConfig'; // Asegúrate de importar tu configuración de Firebase
-import { setDoc, doc } from 'firebase/firestore'; 
-import color from '../../../color';
-
+import { ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'; // Asegúrate de importar Firebase Auth correctamente
+import { doc, setDoc } from 'firebase/firestore'; // Asegúrate de importar Firestore correctamente
+import { auth, db } from '../../../firebaseConfig'
+import color from '../../Color/PaletaColor'
 export class RegistroComponent extends Component {
     constructor(props) {
         super(props);
@@ -22,34 +11,37 @@ export class RegistroComponent extends Component {
             nombre: '',
             email: '',
             password: '',
+            confirmPassword: '',
         };
     }
 
     handleRegister = async () => {
-        const { nombre, email, password } = this.state;
-        const cleanedEmail = email.trim(); // Elimina los espacios en blanco
-        
-        if (cleanedEmail === '' || password === '') {
+        const { nombre, email, password, confirmPassword } = this.state;
+        const { navigation } = this.props;
+
+        if (email.trim() === "" || password === "") {
             Alert.alert('Error', 'Por favor, introduce un correo electrónico y una contraseña válidos.');
             return;
         }
 
-        // Validar el formato del correo electrónico
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(cleanedEmail)) {
+        if (!emailPattern.test(email.trim())) {
             Alert.alert('Error', 'El formato del correo electrónico no es válido.');
             return;
         }
 
+        if (password !== confirmPassword) {
+            Alert.alert('Error', 'Las contraseñas no coinciden.');
+            return;
+        }
+
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, cleanedEmail, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email.trim(), password);
             const user = userCredential.user;
             console.log('Usuario registrado:', user);
 
-            // Actualizar el perfil del usuario con el nombre
             await updateProfile(user, { displayName: nombre });
 
-            // Crear un documento en Firestore con el uid del usuario
             await setDoc(doc(db, 'users', user.uid), {
                 email: user.email,
                 displayName: nombre,
@@ -58,20 +50,19 @@ export class RegistroComponent extends Component {
 
             Alert.alert('Registro exitoso', 'El usuario se ha registrado exitosamente.');
 
-            // Redirigir a la vista de inicio de sesión
-            this.props.navigation.navigate('Login');
+            // Navegar a la vista de inicio de sesión
+            navigation.navigate('Login');
         } catch (error) {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error('Error en el registro:', errorCode, errorMessage);
-            Alert.alert('Error en el registro', errorMessage);
+            console.error('Error en el registro:', error.code, error.message);
+            Alert.alert('Error en el registro', error.message);
         }
 
-        // Limpiar campos de entrada
+        // Limpiar los campos
         this.setState({
             nombre: '',
             email: '',
             password: '',
+            confirmPassword: ''
         });
     };
 
@@ -82,18 +73,16 @@ export class RegistroComponent extends Component {
                     source={require("../../../assets/ImagenRegister.jpg")}
                     style={styles.restante}
                     resizeMode="cover"
-                >
-                </ImageBackground>
+                />
                 <View style={styles.Bg}>
                     <Text style={styles.loginText}>Registro</Text>
-
                     <ScrollView
                         style={styles.scrollContainer}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
                     >
                         <View style={{ width: "95%", display: "flex" }}>
-                            <Text>Nombre de Usuario</Text>
+                            <Text style={{ color: 'white' }}>Nombre de Usuario</Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Nombre"
@@ -102,9 +91,8 @@ export class RegistroComponent extends Component {
                                 onChangeText={(nombre) => this.setState({ nombre })}
                             />
                         </View>
-
                         <View style={{ width: "95%", display: "flex" }}>
-                            <Text  >Correo Electrónico</Text>
+                            <Text style={{ color: 'white' }}>Correo Electrónico</Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Email"
@@ -113,9 +101,8 @@ export class RegistroComponent extends Component {
                                 onChangeText={(email) => this.setState({ email })}
                             />
                         </View>
-
                         <View style={{ width: "95%", display: "flex" }}>
-                            <Text >Contraseña</Text>
+                            <Text style={{ color: 'white' }}>Contraseña</Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Password"
@@ -125,18 +112,18 @@ export class RegistroComponent extends Component {
                                 onChangeText={(password) => this.setState({ password })}
                             />
                         </View>
-
                         <View style={{ width: "95%", display: "flex" }}>
-                            <Text >Repite la contraseña</Text>
+                            <Text style={{ color: 'white' }}>Repite la Contraseña</Text>
                             <TextInput
                                 style={styles.input}
-                                placeholder="Password"
+                                placeholder="Confirmar Password"
                                 placeholderTextColor="#aaa"
                                 secureTextEntry
+                                value={this.state.confirmPassword}
+                                onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
                             />
                         </View>
                     </ScrollView>
-
                     <TouchableOpacity style={styles.button} onPress={this.handleRegister}>
                         <Text style={styles.buttonText}>Crear Cuenta</Text>
                     </TouchableOpacity>
