@@ -50,7 +50,9 @@ const InicioComponents = () => {
             </View>
           </TouchableOpacity>
         </View>
+        <SectionPlanta title="Te puede interesar" />
       </View>
+     
       <StatusBar style="auto" hidden={false} />
     </ScrollView>
   )
@@ -77,6 +79,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLOR_WHITE,
+    marginBottom:50
   },
   imageContainer: {
     width: '100%',
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   sectionContainer: {
-    marginBottom: 10,
+    marginBottom: 5,
     marginTop: 20
   },
   sectionTitle: {

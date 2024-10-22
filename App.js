@@ -16,7 +16,7 @@ export default function App() {
     <AuthProvider>
         <RootNavigator />
       </AuthProvider>
-
+    
     // <Aplication/>
     // <Prevencion/>
   );
