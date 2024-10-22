@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InicioComponents from '../Components/InicioComponents';
 
-class componentName extends Component {
+class ComponentName extends Component {
   render() {
     return (
       <InicioComponents/>
@@ -9,4 +9,4 @@ class componentName extends Component {
   }
 }
 
-export default componentName;
+export default ComponentName;

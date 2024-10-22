@@ -1,6 +1,6 @@
 const Intereses = [
     {
-      imageUrl: require("../../assets/ImagenCard.jpg"),
+      imageUrl: require("../../assets/plantas.png"),
     }
     
   ];

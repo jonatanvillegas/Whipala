@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DetalleFarmaciaComponent from '../Components/DetalleFarmaciaComponent';
+import CitasView from '../Components/Citas';
 
 class ComponentName extends Component {
   render() {
     return (
-      <DetalleFarmaciaComponent/>
+      <CitasView/>
     );
   }
 }

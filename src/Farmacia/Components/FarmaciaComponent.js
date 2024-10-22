@@ -41,7 +41,7 @@ const ListaFarmacia = (props) => {
                     showsHorizontalScrollIndicator={false}
                     ListEmptyComponent={() => <Text>Texto de componente</Text>}
                     renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => handlePress(item, 'PerfilDelMedico')}>
+                        <TouchableOpacity onPress={() => handlePress(item, 'DetalleFarmacia')}>
                             <Element item={item} />
                         </TouchableOpacity>
                     )}

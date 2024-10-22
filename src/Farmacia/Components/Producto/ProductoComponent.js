@@ -22,11 +22,10 @@ import ElementoFarmacia from './ProductoListaComponent'
 import { useNavigation } from '@react-navigation/native'
 
 const ProductoComponent = (props) => {
-    
     const navigation = useNavigation();
-
-    const handlePress = (item) => {
-        navigation.navigate('ComprarProducto', { item });
+    const handlePress = () => {
+        // Aquí puedes pasar el `item` a la vista de destino
+        navigation.navigate('ComprarProducto');
     };
     const {
         data,

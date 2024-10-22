@@ -6,19 +6,11 @@ import { Intereses } from '../../Data/HomeData'
 const CardInicio = () => {
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.container}>
+      
             {Intereses.map((interes, index) => (
                 <View key={index} style={styles.courseCard}>
                     <View style={styles.imageContainer}>
-                        {/* Componente de usuario en la esquina superior izquierda */}
-                        <View style={styles.user}>
-                            <View style={styles.icon}>
-                                <Text style={styles.iconText}>E</Text>
-                            </View>
-                            <Text style={styles.userText}>Necesidades </Text>
-                        </View>
-
-                        {/* Imagen del curso */}
-                        <Image source={interes.imageUrl} style={styles.image} />
+                       
                         <View style={styles.overlay} />
                         {/* Ícono del corazón en la esquina superior derecha */}
                         <FontAwesome name="heart" size={24} color="white" style={styles.heartIcon} />
@@ -63,13 +55,6 @@ const styles = StyleSheet.create({
     imageContainer: {
         position: 'relative',
         
-    },
-    image: {
-        width: '100%',
-        height: 190,
-        resizeMode: 'cover',
-        shadowColor: '#000', 
-        elevation: 5,
     },
     heartIcon: {
         position: 'absolute',
@@ -129,7 +114,6 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.30)', // Cambia la opacidad aquí
         borderRadius: 10,
     },
 })

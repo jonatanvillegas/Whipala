@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AgendarCitaComponents from '../Components/AgendarCitaComponents';
 
-class componentName extends Component {
+class ComponentName extends Component {
   render() {
     return (
       <AgendarCitaComponents/>
@@ -9,4 +9,4 @@ class componentName extends Component {
   }
 }
 
-export default componentName;
+export default ComponentName;

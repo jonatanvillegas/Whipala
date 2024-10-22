@@ -7,8 +7,8 @@ import { RootNavigator } from './stack/Stack';
 
 
 
-import Aplication  from './src/Farmacia/Containers/FarmaciaContainer';
-// import Aplication  from './src/Sintomas/Containers/SintomasContainer'
+//import Aplication  from './src/Farmacia/Containers/Producto/ProductoContainer';
+import Aplication  from './src/Inicio/Containers/InteresesContainer';
 import { AuthProvider } from './context/AuthProvider';
 
 export default function App() {

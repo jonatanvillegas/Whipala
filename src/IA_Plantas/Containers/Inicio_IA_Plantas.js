@@ -33,15 +33,15 @@ class componentName extends Component {
         if (!result.canceled) {
             this.setState({ loading: true, image: result.assets[0].uri }); // Cambiar a result.assets[0].uri
     
-            setTimeout(() => {
-                this.setState({
-                    loading: false,
-                    plantInfo: {
-                        name: "Aloe Vera",
-                        description: "Aloe Vera is a medicinal plant known for its soothing and healing properties."
-                    }
-                });
-            }, 2000);
+           setTimeout(() => {
+    this.setState({
+        cargando: false,
+        informacionPlanta: {
+            nombre: "Aloe Vera",
+            descripcion: "El Aloe Vera es una planta medicinal conocida por sus propiedades calmantes y curativas."
+        }
+    });
+}, 2000);
         }
     };
 
@@ -66,7 +66,7 @@ class componentName extends Component {
                     loading: false,
                     plantInfo: {
                         name: "Aloe Vera",
-                        description: "Aloe Vera is a medicinal plant known for its soothing and healing properties."
+                        description: "El Aloe Vera es una planta medicinal conocida por sus propiedades calmantes y curativas.,."
                     }
                 });
             }, 2000);

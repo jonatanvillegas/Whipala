@@ -96,7 +96,7 @@ const ChatbotComponent = () => {
                 </View>
                 <View style={styles.fondoImage}>
                     <Image
-                        source={require('../../../assets/LogoWhipalaED.png')}
+                        source={require('../../../assets/boticono.png')}
                         style={styles.image}
                     />
                 </View>

@@ -4,6 +4,7 @@ import Color from '../../Color/PaletaColor';
 import MapView from 'react-native-maps';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const AgendarCitaComponents = () => {
     const [fechas, setFechas] = useState([]);
@@ -19,10 +20,15 @@ const AgendarCitaComponents = () => {
         setFechaSeleccionada(fecha);
     };
 
+    const navigation = useNavigation();
+    const handlePress = () => {
+        // Aquí puedes pasar el `item` a la vista de destino
+        navigation.navigate('Citas');
+    };
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.efectoSuperior}>
-                <Text style={styles.indicador}>Farmacia</Text>
+                <Text style={styles.indicador}>Agendar Cita</Text>
             </View>
             <View style={styles.contenedor}>
                 <Text style={styles.titulo}>Datos del medico</Text>
@@ -94,7 +100,7 @@ const AgendarCitaComponents = () => {
                     contentContainerStyle={styles.horaScroll}
                 />
                 <View style={styles.botonContainer}>
-                    <TouchableOpacity style={styles.botonAgendar}>
+                    <TouchableOpacity style={styles.botonAgendar} onPress={handlePress}>
                         <View style={{flexDirection:'row',gap:8}}>
                         <MaterialIcons name="edit-calendar" size={24} color="white" />
                         <Text style={styles.botonText}>
